@@ -39,7 +39,6 @@ html, body {
   -webkit-user-select: none;
 }
 
-/* ── SCANLINE OVERLAY ── */
 body::before {
   content: '';
   position: fixed; inset: 0;
@@ -63,9 +62,6 @@ body::before {
   position: relative;
 }
 
-/* ══════════════════════════════════
-   HEADER
-══════════════════════════════════ */
 header {
   display: flex;
   align-items: center;
@@ -85,49 +81,31 @@ header::after {
   opacity: 0.4;
 }
 
-.wordmark {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-}
-
+.wordmark { display: flex; flex-direction: column; line-height: 1; }
 .wordmark-main {
   font-family: var(--cond);
-  font-size: 28px;
-  font-weight: 900;
-  letter-spacing: 0.12em;
-  color: var(--g);
+  font-size: 28px; font-weight: 900;
+  letter-spacing: 0.12em; color: var(--g);
   text-shadow: 0 0 20px rgba(57,255,20,0.4);
 }
-
 .wordmark-sub {
   font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.2em;
-  color: var(--dim);
-  margin-top: 1px;
+  font-size: 9px; letter-spacing: 0.2em;
+  color: var(--dim); margin-top: 1px;
 }
 
 .ble-area { display: flex; align-items: center; gap: 8px; }
 
-/* ── FULLSCREEN BUTTON ── */
 .fs-btn {
   width: 34px; height: 34px;
-  background: var(--s2);
-  border: 1px solid var(--b0);
-  border-radius: 4px;
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s;
-  flex-shrink: 0;
+  background: var(--s2); border: 1px solid var(--b0);
+  border-radius: 4px; display: flex; align-items: center;
+  justify-content: center; cursor: pointer; transition: all 0.2s; flex-shrink: 0;
 }
 .fs-btn:hover { border-color: var(--g); }
 .fs-btn svg { width: 16px; height: 16px; stroke: var(--dim); fill: none; stroke-width: 1.8; transition: stroke 0.2s; }
 .fs-btn:hover svg { stroke: var(--g); }
 
-/* ══════════════════════════════════
-   LANDSCAPE / FULLSCREEN LAYOUT
-══════════════════════════════════ */
 @media (orientation: landscape) and (max-height: 500px) {
   .app {
     grid-template-rows: none;
@@ -170,83 +148,54 @@ header::after {
   footer { display: none; }
   .land-ble {
     display: flex !important;
-    align-items: center;
-    gap: 6px;
-    font-family: var(--mono);
-    font-size: 9px;
-    color: var(--dim);
-    letter-spacing: 0.1em;
+    align-items: center; gap: 6px;
+    font-family: var(--mono); font-size: 9px;
+    color: var(--dim); letter-spacing: 0.1em;
   }
   .land-ble.connected { color: var(--g); }
   .land-ble .land-dot {
     width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--dim);
-    transition: all 0.3s;
+    border-radius: 50%; background: var(--dim); transition: all 0.3s;
   }
   .land-ble.connected .land-dot {
-    background: var(--g);
-    box-shadow: 0 0 6px var(--g);
+    background: var(--g); box-shadow: 0 0 6px var(--g);
     animation: pulse 2s infinite;
   }
 }
 
-/* Portrait: hide landscape-only elements */
 .land-aside { display: none; }
 .land-ble   { display: none; }
 
 .rssi-bars {
-  display: flex;
-  align-items: flex-end;
-  gap: 2px;
-  height: 18px;
-  opacity: 0.3;
-  transition: opacity 0.3s;
+  display: flex; align-items: flex-end;
+  gap: 2px; height: 18px; opacity: 0.3; transition: opacity 0.3s;
 }
 .rssi-bars.connected { opacity: 1; }
-.rssi-bar {
-  width: 4px;
-  border-radius: 1px;
-  background: var(--g);
-  transition: height 0.3s;
-}
+.rssi-bar { width: 4px; border-radius: 1px; background: var(--g); transition: height 0.3s; }
 .rssi-bar:nth-child(1) { height: 5px; }
 .rssi-bar:nth-child(2) { height: 9px; }
 .rssi-bar:nth-child(3) { height: 13px; }
 .rssi-bar:nth-child(4) { height: 18px; }
 
 .ble-btn {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  background: var(--s2);
-  border: 1px solid var(--b0);
-  border-radius: 4px;
-  padding: 8px 14px;
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  color: var(--dim);
-  cursor: pointer;
-  transition: all 0.2s;
-  text-transform: uppercase;
+  display: flex; align-items: center; gap: 7px;
+  background: var(--s2); border: 1px solid var(--b0);
+  border-radius: 4px; padding: 8px 14px;
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.12em; color: var(--dim);
+  cursor: pointer; transition: all 0.2s; text-transform: uppercase;
 }
 .ble-btn:hover { border-color: var(--g); color: var(--g); }
 .ble-btn.connected {
-  border-color: var(--g);
-  color: var(--g);
-  background: var(--g3);
-  box-shadow: 0 0 12px rgba(57,255,20,0.15);
+  border-color: var(--g); color: var(--g);
+  background: var(--g3); box-shadow: 0 0 12px rgba(57,255,20,0.15);
 }
 .ble-dot {
   width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--dim);
-  transition: all 0.3s;
+  border-radius: 50%; background: var(--dim); transition: all 0.3s;
 }
 .ble-btn.connected .ble-dot {
-  background: var(--g);
-  box-shadow: 0 0 8px var(--g);
+  background: var(--g); box-shadow: 0 0 8px var(--g);
   animation: pulse 2s infinite;
 }
 @keyframes pulse {
@@ -254,7 +203,6 @@ header::after {
   50% { opacity: 0.4; }
 }
 
-/* ── BLADE FLASH ALERT ── */
 @keyframes bladeFlash {
   0%,100% { box-shadow: 0 0 0 0 transparent; border-color: var(--g); }
   50%     { box-shadow: 0 0 20px 4px rgba(57,255,20,0.5); border-color: var(--g); }
@@ -267,7 +215,6 @@ header::after {
 .act-btn.blade-on svg { stroke: var(--g) !important; }
 .act-btn.blade-on .act-btn-lbl { color: var(--g) !important; }
 
-/* blade telemetry blink */
 @keyframes telBlink {
   0%,100% { opacity: 1; }
   50% { opacity: 0.2; }
@@ -277,430 +224,202 @@ header::after {
   color: var(--g) !important;
 }
 
-/* ══════════════════════════════════
-   MAIN
-══════════════════════════════════ */
 main {
-  display: flex;
-  flex-direction: column;
-  padding: 14px 16px;
-  gap: 12px;
-  overflow-y: auto;
-  overflow-x: hidden;
+  display: flex; flex-direction: column;
+  padding: 14px 16px; gap: 12px;
+  overflow-y: auto; overflow-x: hidden;
 }
 
-/* ── TELEMETRY STRIP ── */
 .telem {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 6px;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px;
 }
 
 .tel {
-  background: var(--s1);
-  border: 1px solid var(--b0);
-  border-top: 2px solid var(--b1);
-  border-radius: 4px;
-  padding: 8px 8px 7px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
+  background: var(--s1); border: 1px solid var(--b0);
+  border-top: 2px solid var(--b1); border-radius: 4px;
+  padding: 8px 8px 7px; text-align: center;
+  position: relative; overflow: hidden;
 }
-
 .tel::before {
   content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
   background: linear-gradient(90deg, transparent, var(--b1), transparent);
 }
-
 .tel-lbl {
-  font-family: var(--mono);
-  font-size: 8px;
-  color: var(--dim);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: 4px;
+  font-family: var(--mono); font-size: 8px;
+  color: var(--dim); letter-spacing: 0.12em;
+  text-transform: uppercase; margin-bottom: 4px;
 }
 .tel-val {
-  font-family: var(--cond);
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  color: var(--text);
+  font-family: var(--cond); font-size: 16px;
+  font-weight: 700; letter-spacing: 0.05em; color: var(--text);
 }
 .tel-val.g  { color: var(--g); }
 .tel-val.am { color: var(--am); }
 .tel-val.r  { color: var(--r); }
 
-/* ── CONTROL SECTION (joystick + arrows) ── */
 .ctrl-section {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 12px;
-  align-items: center;
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 12px; align-items: center;
 }
 
-/* ── JOYSTICK ── */
 .joy-wrap {
-  background: var(--s1);
-  border: 1px solid var(--b0);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  position: relative;
+  background: var(--s1); border: 1px solid var(--b0);
+  border-radius: 8px; display: flex;
+  align-items: center; justify-content: center;
+  overflow: hidden; position: relative;
 }
-
 .joy-wrap::after {
   content: 'JOYSTICK';
-  position: absolute;
-  top: 6px; left: 8px;
-  font-family: var(--mono);
-  font-size: 7px;
-  color: var(--dim);
-  letter-spacing: 0.15em;
-  opacity: 0.6;
+  position: absolute; top: 6px; left: 8px;
+  font-family: var(--mono); font-size: 7px;
+  color: var(--dim); letter-spacing: 0.15em; opacity: 0.6;
 }
-
-.joy-canvas {
-  display: block;
-  touch-action: none;
-  cursor: grab;
-}
+.joy-canvas { display: block; touch-action: none; cursor: grab; }
 .joy-canvas:active { cursor: grabbing; }
 
-/* ── ARROW PAD ── */
-.arrow-pad {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-}
-
-.arr-row {
-  display: flex;
-  gap: 4px;
-}
+.arrow-pad { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.arr-row { display: flex; gap: 4px; }
 
 .arr-btn {
-  width: 44px;
-  height: 44px;
-  background: var(--s2);
-  border: 1px solid var(--b1);
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.12s;
-  font-size: 0;
-  position: relative;
-  -webkit-tap-highlight-color: transparent;
+  width: 44px; height: 44px;
+  background: var(--s2); border: 1px solid var(--b1);
+  border-radius: 5px; display: flex;
+  align-items: center; justify-content: center;
+  cursor: pointer; transition: all 0.12s; font-size: 0;
+  position: relative; -webkit-tap-highlight-color: transparent;
 }
-
-.arr-btn svg {
-  width: 16px;
-  height: 16px;
-  fill: var(--dim);
-  transition: fill 0.12s;
+.arr-btn svg { width: 16px; height: 16px; fill: var(--dim); transition: fill 0.12s; }
+.arr-btn:active, .arr-btn.pressed {
+  background: var(--g3); border-color: var(--g); transform: scale(0.93);
 }
+.arr-btn:active svg, .arr-btn.pressed svg { fill: var(--g); }
 
-.arr-btn:active,
-.arr-btn.pressed {
-  background: var(--g3);
-  border-color: var(--g);
-  transform: scale(0.93);
-}
-
-.arr-btn:active svg,
-.arr-btn.pressed svg {
-  fill: var(--g);
-}
-
-/* Center stop button */
 .arr-center {
-  width: 44px;
-  height: 44px;
-  background: var(--r2);
-  border: 1px solid rgba(255,45,45,0.35);
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.12s;
+  width: 44px; height: 44px;
+  background: var(--r2); border: 1px solid rgba(255,45,45,0.35);
+  border-radius: 5px; display: flex;
+  align-items: center; justify-content: center;
+  cursor: pointer; transition: all 0.12s;
   -webkit-tap-highlight-color: transparent;
 }
-.arr-center svg {
-  width: 14px;
-  height: 14px;
-  fill: var(--r);
-}
-.arr-center:active {
-  background: rgba(255,45,45,0.22);
-  transform: scale(0.93);
-}
+.arr-center svg { width: 14px; height: 14px; fill: var(--r); }
+.arr-center:active { background: rgba(255,45,45,0.22); transform: scale(0.93); }
 
-/* ── DIR INDICATOR ── */
-.dir-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.dir-bar {
-  flex: 1;
-  height: 2px;
-  background: var(--b0);
-  border-radius: 1px;
-  overflow: hidden;
-}
+.dir-row { display: flex; align-items: center; gap: 12px; }
+.dir-bar { flex: 1; height: 2px; background: var(--b0); border-radius: 1px; overflow: hidden; }
 .dir-bar-fill {
-  height: 100%;
-  width: 0%;
-  background: var(--g);
-  transition: width 0.15s;
+  height: 100%; width: 0%;
+  background: var(--g); transition: width 0.15s;
   box-shadow: 0 0 8px var(--g);
 }
-
 .dir-text {
-  font-family: var(--cond);
-  font-size: 18px;
-  font-weight: 800;
-  letter-spacing: 0.15em;
-  color: var(--g);
-  text-align: right;
-  min-width: 100px;
-  text-shadow: 0 0 12px rgba(57,255,20,0.4);
+  font-family: var(--cond); font-size: 18px; font-weight: 800;
+  letter-spacing: 0.15em; color: var(--g); text-align: right;
+  min-width: 100px; text-shadow: 0 0 12px rgba(57,255,20,0.4);
 }
 
-/* ── MOTOR BARS ── */
 .motor-bars {
-  display: grid;
-  grid-template-columns: 1fr 24px 1fr;
-  gap: 6px;
-  align-items: center;
-  background: var(--s1);
-  border: 1px solid var(--b0);
-  border-radius: 6px;
-  padding: 10px 12px;
+  display: grid; grid-template-columns: 1fr 24px 1fr;
+  gap: 6px; align-items: center;
+  background: var(--s1); border: 1px solid var(--b0);
+  border-radius: 6px; padding: 10px 12px;
 }
-
 .mbar-wrap {
-  height: 8px;
-  background: var(--s2);
-  border-radius: 2px;
-  overflow: visible;
-  position: relative;
-  display: flex;
-  align-items: center;
+  height: 8px; background: var(--s2);
+  border-radius: 2px; overflow: visible;
+  position: relative; display: flex; align-items: center;
 }
-
 .mbar-fill {
-  position: absolute;
-  height: 100%;
-  background: var(--g);
-  border-radius: 2px;
-  transition: all 0.1s;
-  box-shadow: 0 0 6px rgba(57,255,20,0.5);
+  position: absolute; height: 100%;
+  background: var(--g); border-radius: 2px;
+  transition: all 0.1s; box-shadow: 0 0 6px rgba(57,255,20,0.5);
 }
-
 .mbar-fill.rev { background: var(--am); box-shadow: 0 0 6px rgba(255,184,0,0.5); }
+.mbar-lbl { font-family: var(--mono); font-size: 9px; color: var(--dim); text-align: center; letter-spacing: 0.1em; }
 
-.mbar-lbl {
-  font-family: var(--mono);
-  font-size: 9px;
-  color: var(--dim);
-  text-align: center;
-  letter-spacing: 0.1em;
-}
-
-/* ── ACTION BUTTONS ── */
-.action-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 8px;
-}
+.action-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
 
 .act-btn {
-  padding: 12px 8px;
-  background: var(--s2);
-  border: 1px solid var(--b1);
-  border-radius: 6px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  cursor: pointer;
-  transition: all 0.15s;
-  -webkit-tap-highlight-color: transparent;
+  padding: 12px 8px; background: var(--s2); border: 1px solid var(--b1);
+  border-radius: 6px; display: flex; flex-direction: column;
+  align-items: center; gap: 5px; cursor: pointer;
+  transition: all 0.15s; -webkit-tap-highlight-color: transparent;
 }
 .act-btn:disabled { opacity: 0.25; cursor: not-allowed; }
-.act-btn:not(:disabled):hover {
-  border-color: var(--g);
-  background: var(--g3);
-}
+.act-btn:not(:disabled):hover { border-color: var(--g); background: var(--g3); }
 .act-btn:not(:disabled):active { transform: scale(0.95); }
-
 .act-btn svg {
-  width: 20px; height: 20px;
-  stroke: var(--dim); fill: none;
-  stroke-width: 1.8;
-  transition: stroke 0.15s;
+  width: 20px; height: 20px; stroke: var(--dim);
+  fill: none; stroke-width: 1.8; transition: stroke 0.15s;
 }
 .act-btn:not(:disabled):hover svg { stroke: var(--g); }
-.act-btn.active {
-  border-color: var(--g);
-  background: var(--g3);
-  box-shadow: 0 0 16px rgba(57,255,20,0.15);
-}
+.act-btn.active { border-color: var(--g); background: var(--g3); box-shadow: 0 0 16px rgba(57,255,20,0.15); }
 .act-btn.active svg { stroke: var(--g); }
-
 .act-btn-lbl {
-  font-family: var(--cond);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  color: var(--dim);
-  text-transform: uppercase;
-  transition: color 0.15s;
+  font-family: var(--cond); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.15em; color: var(--dim);
+  text-transform: uppercase; transition: color 0.15s;
 }
 .act-btn:not(:disabled):hover .act-btn-lbl { color: var(--g); }
 .act-btn.active .act-btn-lbl { color: var(--g); }
 
-/* Stop button special */
-.act-stop {
-  background: var(--r2);
-  border-color: rgba(255,45,45,0.3);
-}
+.act-stop { background: var(--r2); border-color: rgba(255,45,45,0.3); }
 .act-stop svg { stroke: var(--r); }
 .act-stop .act-btn-lbl { color: var(--r); }
-.act-stop:not(:disabled):hover {
-  background: rgba(255,45,45,0.2);
-  border-color: var(--r);
-}
+.act-stop:not(:disabled):hover { background: rgba(255,45,45,0.2); border-color: var(--r); }
 .act-stop:not(:disabled):hover svg { stroke: var(--r); }
 .act-stop:not(:disabled):hover .act-btn-lbl { color: var(--r); }
 
-/* ── LOG ── */
 .log-panel {
-  background: var(--s0);
-  border: 1px solid var(--b0);
-  border-radius: 6px;
-  padding: 8px 12px;
-  max-height: 72px;
-  overflow-y: auto;
-  flex-shrink: 0;
+  background: var(--s0); border: 1px solid var(--b0);
+  border-radius: 6px; padding: 8px 12px;
+  max-height: 72px; overflow-y: auto; flex-shrink: 0;
 }
-.log-line {
-  font-family: var(--mono);
-  font-size: 9px;
-  line-height: 1.8;
-  color: var(--dim);
-}
+.log-line { font-family: var(--mono); font-size: 9px; line-height: 1.8; color: var(--dim); }
 .log-line.ok   { color: var(--g); }
 .log-line.err  { color: var(--r); }
 .log-line.info { color: var(--am); }
 
-/* ══════════════════════════════════
-   FOOTER
-══════════════════════════════════ */
 footer {
-  padding: 8px 18px 12px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-top: 1px solid var(--b0);
-  background: var(--s0);
+  padding: 8px 18px 12px; display: flex;
+  align-items: center; justify-content: space-between;
+  border-top: 1px solid var(--b0); background: var(--s0);
 }
-.ft-left {
-  font-family: var(--mono);
-  font-size: 8px;
-  color: var(--dim);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-.ft-right {
-  font-family: var(--mono);
-  font-size: 8px;
-  color: var(--dim);
-  letter-spacing: 0.08em;
-}
+.ft-left { font-family: var(--mono); font-size: 8px; color: var(--dim); letter-spacing: 0.1em; text-transform: uppercase; }
+.ft-right { font-family: var(--mono); font-size: 8px; color: var(--dim); letter-spacing: 0.08em; }
 
-/* ══════════════════════════════════
-   OVERLAY
-══════════════════════════════════ */
 .overlay {
   position: fixed; inset: 0;
   background: rgba(8,12,8,0.95);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  z-index: 200;
-  backdrop-filter: blur(6px);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 20px; z-index: 200; backdrop-filter: blur(6px);
 }
 .overlay.hidden { display: none; }
-
 .ovl-wordmark {
-  font-family: var(--cond);
-  font-size: 48px;
-  font-weight: 900;
-  letter-spacing: 0.15em;
-  color: var(--g);
+  font-family: var(--cond); font-size: 48px; font-weight: 900;
+  letter-spacing: 0.15em; color: var(--g);
   text-shadow: 0 0 40px rgba(57,255,20,0.5);
 }
-.ovl-sub {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  color: var(--dim);
-  text-transform: uppercase;
-}
-.ovl-line {
-  width: 80px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--g), transparent);
-}
-.ovl-msg {
-  font-family: var(--body);
-  font-size: 13px;
-  color: var(--dim);
-  text-align: center;
-  max-width: 260px;
-  line-height: 1.7;
-}
+.ovl-sub { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; color: var(--dim); text-transform: uppercase; }
+.ovl-line { width: 80px; height: 1px; background: linear-gradient(90deg, transparent, var(--g), transparent); }
+.ovl-msg { font-family: var(--body); font-size: 13px; color: var(--dim); text-align: center; max-width: 260px; line-height: 1.7; }
 .ovl-btn {
-  margin-top: 8px;
-  padding: 14px 48px;
-  background: transparent;
-  border: 1px solid var(--g);
-  border-radius: 3px;
-  font-family: var(--cond);
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--g);
-  cursor: pointer;
-  transition: all 0.2s;
+  margin-top: 8px; padding: 14px 48px;
+  background: transparent; border: 1px solid var(--g);
+  border-radius: 3px; font-family: var(--cond); font-size: 14px;
+  font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--g); cursor: pointer; transition: all 0.2s;
   box-shadow: 0 0 20px rgba(57,255,20,0.1);
 }
-.ovl-btn:hover {
-  background: var(--g3);
-  box-shadow: 0 0 30px rgba(57,255,20,0.25);
-}
+.ovl-btn:hover { background: var(--g3); box-shadow: 0 0 30px rgba(57,255,20,0.25); }
 .ovl-err .ovl-wordmark { color: var(--r); text-shadow: 0 0 40px rgba(255,45,45,0.4); }
 .ovl-err .ovl-line { background: linear-gradient(90deg, transparent, var(--r), transparent); }
 </style>
 </head>
 <body>
 
-<!-- ── NO BLE OVERLAY ── -->
 <div class="overlay ovl-err hidden" id="noBleOvl">
   <div class="ovl-wordmark">AUMOWER</div>
   <div class="ovl-line"></div>
@@ -708,7 +427,6 @@ footer {
   <div class="ovl-msg">Web Bluetooth requires Chrome or Edge on Android or Desktop. Not supported on iOS Safari or Firefox.</div>
 </div>
 
-<!-- ── CONNECT OVERLAY ── -->
 <div class="overlay" id="connOvl">
   <div class="ovl-wordmark">AUMOWER</div>
   <div class="ovl-line"></div>
@@ -718,8 +436,6 @@ footer {
 </div>
 
 <div class="app">
-
-  <!-- LANDSCAPE SIDEBAR (hidden in portrait, shown in landscape) -->
   <div class="land-aside" id="landAside">
     <div class="land-ble" id="landBle">
       <div class="land-dot"></div>
@@ -728,7 +444,6 @@ footer {
     <div class="joy-wrap" id="joyWrapLand" style="width:180px;height:150px;">
       <canvas class="joy-canvas" id="joyCanvasLand"></canvas>
     </div>
-    <!-- Arrow pad duplicate for landscape -->
     <div class="arrow-pad">
       <div class="arr-row">
         <div style="width:44px;height:44px;"></div>
@@ -758,7 +473,6 @@ footer {
     </div>
   </div>
 
-  <!-- HEADER -->
   <header>
     <div class="wordmark">
       <div class="wordmark-main">AUMOWER</div>
@@ -766,10 +480,8 @@ footer {
     </div>
     <div class="ble-area">
       <div class="rssi-bars" id="rssiBars">
-        <div class="rssi-bar"></div>
-        <div class="rssi-bar"></div>
-        <div class="rssi-bar"></div>
-        <div class="rssi-bar"></div>
+        <div class="rssi-bar"></div><div class="rssi-bar"></div>
+        <div class="rssi-bar"></div><div class="rssi-bar"></div>
       </div>
       <button class="ble-btn" id="bleBtn">
         <div class="ble-dot"></div>
@@ -783,10 +495,7 @@ footer {
     </div>
   </header>
 
-  <!-- MAIN -->
   <main>
-
-    <!-- TELEMETRY -->
     <div class="telem">
       <div class="tel">
         <div class="tel-lbl">Direction</div>
@@ -806,15 +515,11 @@ footer {
       </div>
     </div>
 
-    <!-- JOYSTICK + ARROW PAD -->
     <div class="ctrl-section">
       <div class="joy-wrap" id="joyWrap">
         <canvas class="joy-canvas" id="joyCanvas"></canvas>
       </div>
-
-      <!-- ARROW PAD -->
       <div class="arrow-pad">
-        <!-- UP -->
         <div class="arr-row">
           <div style="width:44px;height:44px;"></div>
           <button class="arr-btn" id="padN" data-dir="N">
@@ -822,7 +527,6 @@ footer {
           </button>
           <div style="width:44px;height:44px;"></div>
         </div>
-        <!-- MID -->
         <div class="arr-row">
           <button class="arr-btn" id="padW" data-dir="W">
             <svg viewBox="0 0 24 24"><path d="M5 12l8-7v14L5 12z"/></svg>
@@ -834,7 +538,6 @@ footer {
             <svg viewBox="0 0 24 24"><path d="M19 12l-8-7v14l8-7z"/></svg>
           </button>
         </div>
-        <!-- DOWN -->
         <div class="arr-row">
           <div style="width:44px;height:44px;"></div>
           <button class="arr-btn" id="padS" data-dir="S">
@@ -845,7 +548,6 @@ footer {
       </div>
     </div>
 
-    <!-- MOTOR POWER BARS -->
     <div class="motor-bars">
       <div>
         <div class="tel-lbl" style="margin-bottom:5px;">MOTOR L</div>
@@ -858,13 +560,11 @@ footer {
       </div>
     </div>
 
-    <!-- DIR TEXT -->
     <div class="dir-row">
       <div class="dir-bar"><div class="dir-bar-fill" id="dirBarFill"></div></div>
       <div class="dir-text" id="dirText">IDLE</div>
     </div>
 
-    <!-- ACTION BUTTONS -->
     <div class="action-row">
       <button class="act-btn" id="btnBlade" disabled>
         <svg viewBox="0 0 24 24">
@@ -889,14 +589,11 @@ footer {
       </button>
     </div>
 
-    <!-- LOG -->
     <div class="log-panel" id="logPanel">
       <div class="log-line info">SYS  Waiting for BLE connection</div>
     </div>
-
   </main>
 
-  <!-- FOOTER -->
   <footer>
     <div class="ft-left">NUS · 6E400001 · Mower-BLE</div>
     <div class="ft-right" id="ftStatus">OFFLINE</div>
@@ -912,11 +609,10 @@ const NUS_TX      = '6e400003-b5a3-f393-e0a9-e50e24dcca9e';
 const NUS_RX      = '6e400002-b5a3-f393-e0a9-e50e24dcca9e';
 
 let device, server, rxChar, txChar;
-let connected   = false;
-let autoActive  = false;
-let cutActive   = false;
+let connected  = false;
+let autoActive = false;
+let cutActive  = false;
 
-// Motor targets
 let joyL = 0, joyR = 0;
 
 // ════════════════════════════════════════════════════════
@@ -941,16 +637,8 @@ const mfillL     = document.getElementById('mfillL');
 const mfillR     = document.getElementById('mfillR');
 const logPanel   = document.getElementById('logPanel');
 const ftStatus   = document.getElementById('ftStatus');
+const padStop    = document.getElementById('padStop');
 
-const padN = document.getElementById('padN');
-const padS = document.getElementById('padS');
-const padW = document.getElementById('padW');
-const padE = document.getElementById('padE');
-const padStop = document.getElementById('padStop');
-
-// ════════════════════════════════════════════════════════
-//  CHECK BLE
-// ════════════════════════════════════════════════════════
 if (!navigator.bluetooth) {
   noBleOvl.classList.remove('hidden');
   connOvl.classList.add('hidden');
@@ -1015,12 +703,10 @@ function onDisconnected() {
   autoActive = false;
   cutActive = false;
   btnAuto.classList.remove('active');
-  btnBlade.classList.remove('active');
-  btnBlade.classList.remove('blade-on');
+  btnBlade.classList.remove('active', 'blade-on');
   tBlade.textContent = 'OFF';
   tBlade.className = 'tel-val';
-  tBlade.classList.remove('blade-active');
-  joyL = joyR = smoothL = smoothR = 0;
+  joyL = joyR = 0;
   lastSentL = lastSentR = 999;
   drawJoy(getCX(), getCY());
   drawJoyL(getCXL(), getCYL());
@@ -1047,37 +733,20 @@ function onNotify(evt) {
 }
 
 function handleTelemetry(msg) {
-  // ── DIRECTION ──
   if (msg.dir) {
     tDir.textContent = msg.dir;
     dirText.textContent = msg.dir;
     updateDirBar(msg.dir);
   }
-
-  // ── ENCODERS ──
   if (msg.encL !== undefined) {
     tEncL.textContent = msg.encL;
     tEncR.textContent = msg.encR;
   }
-
-  // ── MOTOR BARS (from Pico telemetry) ──
   if (msg.L !== undefined) updateMotorBars(msg.L, msg.R);
+  if (msg.cut !== undefined) setCutActive(msg.cut);
 
-  // ── BLADE STATUS ──
-  // Handle both boolean `cut` field AND status strings from Pico
-  if (msg.cut !== undefined) {
-    setCutActive(msg.cut);
-  }
-
-  // ── STATUS EVENTS ──
-  if (msg.status === 'cut_on') {
-    setCutActive(true);
-    addLog('BLADE  ON  — spinning', 'ok');
-  }
-  if (msg.status === 'cut_off') {
-    setCutActive(false);
-    addLog('BLADE  OFF', 'info');
-  }
+  if (msg.status === 'cut_on')  { setCutActive(true);  addLog('BLADE  ON  — spinning', 'ok'); }
+  if (msg.status === 'cut_off') { setCutActive(false); addLog('BLADE  OFF', 'info'); }
   if (msg.status === 'mowing')  addLog('AUTO  Stripe ' + msg.stripe, 'info');
   if (msg.status === 'manual') {
     autoActive = false;
@@ -1096,7 +765,6 @@ function handleTelemetry(msg) {
   }
 }
 
-// ── BLADE STATE HELPER — single source of truth ──
 function setCutActive(active) {
   cutActive = !!active;
   if (cutActive) {
@@ -1110,7 +778,9 @@ function setCutActive(active) {
   }
 }
 
-// ── SEND QUEUE — never drops commands, no isSending deadlock ──
+// ════════════════════════════════════════════════════════
+//  SEND QUEUE
+// ════════════════════════════════════════════════════════
 const _sendQueue = [];
 let _sendBusy = false;
 
@@ -1134,7 +804,7 @@ async function _drainQueue() {
 
 function sendCmd(obj) {
   if (!connected || !rxChar) return;
-  // For motor commands (L/R), replace any pending motor cmd — no point sending stale values
+  // For motor L/R commands, drop stale queued ones to keep latency low
   if (obj.L !== undefined) {
     const idx = _sendQueue.findIndex(q => q.L !== undefined);
     if (idx >= 0) _sendQueue.splice(idx, 1);
@@ -1151,14 +821,13 @@ const ctx    = canvas.getContext('2d');
 let joyActive = false;
 let stickDx = 0, stickDy = 0;
 
-const getCX     = () => canvas.width  / 2;
-const getCY     = () => canvas.height / 2;
-const getBR     = () => Math.min(canvas.width, canvas.height) * 0.40;
-const getKR     = () => getBR() * 0.30;
+const getCX = () => canvas.width  / 2;
+const getCY = () => canvas.height / 2;
+const getBR = () => Math.min(canvas.width, canvas.height) * 0.40;
+const getKR = () => getBR() * 0.30;
 
 function drawJoy(px, py) {
-  const CX = getCX(), CY = getCY();
-  const BR = getBR(), KR = getKR();
+  const CX = getCX(), CY = getCY(), BR = getBR(), KR = getKR();
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   if (connected) {
@@ -1168,48 +837,37 @@ function drawJoy(px, py) {
     ctx.beginPath(); ctx.arc(CX, CY, BR+4, 0, Math.PI*2);
     ctx.fillStyle = grad; ctx.fill();
   }
-
   ctx.beginPath(); ctx.arc(CX, CY, BR, 0, Math.PI*2);
   ctx.strokeStyle = connected ? '#1c3c1c' : '#111811';
-  ctx.lineWidth = 1.5;
-  ctx.stroke();
-  ctx.fillStyle = 'rgba(12,17,12,0.9)';
-  ctx.fill();
+  ctx.lineWidth = 1.5; ctx.stroke();
+  ctx.fillStyle = 'rgba(12,17,12,0.9)'; ctx.fill();
 
-  ctx.strokeStyle = '#1a2a1a';
-  ctx.lineWidth = 1;
+  ctx.strokeStyle = '#1a2a1a'; ctx.lineWidth = 1;
   for (let r = BR * 0.33; r < BR; r += BR * 0.33) {
     ctx.beginPath(); ctx.arc(CX, CY, r, 0, Math.PI*2); ctx.stroke();
   }
-  ctx.beginPath(); ctx.moveTo(CX - BR + 4, CY); ctx.lineTo(CX + BR - 4, CY); ctx.stroke();
-  ctx.beginPath(); ctx.moveTo(CX, CY - BR + 4); ctx.lineTo(CX, CY + BR - 4); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(CX-BR+4,CY); ctx.lineTo(CX+BR-4,CY); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(CX,CY-BR+4); ctx.lineTo(CX,CY+BR-4); ctx.stroke();
 
-  ctx.beginPath(); ctx.arc(px + 2, py + 3, KR, 0, Math.PI*2);
+  ctx.beginPath(); ctx.arc(px+2, py+3, KR, 0, Math.PI*2);
   ctx.fillStyle = 'rgba(0,0,0,0.5)'; ctx.fill();
 
-  const kg = ctx.createRadialGradient(px - KR*0.3, py - KR*0.3, 1, px, py, KR);
+  const kg = ctx.createRadialGradient(px-KR*0.3, py-KR*0.3, 1, px, py, KR);
   if (connected) {
-    kg.addColorStop(0, '#6aff40');
-    kg.addColorStop(0.6, '#39ff14');
-    kg.addColorStop(1, '#1aaa00');
+    kg.addColorStop(0, '#6aff40'); kg.addColorStop(0.6, '#39ff14'); kg.addColorStop(1, '#1aaa00');
   } else {
-    kg.addColorStop(0, '#2a3a2a');
-    kg.addColorStop(1, '#1a2a1a');
+    kg.addColorStop(0, '#2a3a2a'); kg.addColorStop(1, '#1a2a1a');
   }
   ctx.beginPath(); ctx.arc(px, py, KR, 0, Math.PI*2);
   ctx.fillStyle = kg; ctx.fill();
-  if (connected) {
-    ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 1.5; ctx.stroke();
-  }
-
+  if (connected) { ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 1.5; ctx.stroke(); }
   ctx.beginPath(); ctx.arc(px, py, 3, 0, Math.PI*2);
   ctx.fillStyle = connected ? 'rgba(0,0,0,0.6)' : 'rgba(0,0,0,0.3)'; ctx.fill();
 }
 
 function updateStick(clientX, clientY) {
-  const r   = canvas.getBoundingClientRect();
-  const CX  = getCX(), CY = getCY();
-  const BR  = getBR(), KR = getKR();
+  const r = canvas.getBoundingClientRect();
+  const CX = getCX(), CY = getCY(), BR = getBR(), KR = getKR();
   const maxR = BR - KR;
   let dx = clientX - r.left - CX;
   let dy = clientY - r.top  - CY;
@@ -1219,28 +877,16 @@ function updateStick(clientX, clientY) {
 
   const nx = Math.abs(dx) < maxR * 0.06 ? 0 : dx / maxR;
   const ny = Math.abs(dy) < maxR * 0.06 ? 0 : dy / maxR;
-
-  const fwd  = -ny;
-  const turn =  nx;
-
+  const fwd = -ny, turn = nx;
   const turnScale = 0.65;
-  // FIX: left motor = fwd - turn (turning right reduces left motor),
-  //      right motor = fwd + turn (turning right increases right motor)
-  // This matches the Pico's expected L/R convention.
   joyL = Math.max(-100, Math.min(100, (fwd - turn * turnScale) * 100));
   joyR = Math.max(-100, Math.min(100, (fwd + turn * turnScale) * 100));
-
   drawJoy(CX + dx, CY + dy);
-  scheduleSend();
 }
 
 function resetStick() {
-  joyActive = false;
-  stickDx = stickDy = 0;
-  joyL = joyR = 0;
-  drawJoy(getCX(), getCY());
-  dirText.textContent = 'IDLE';
-  scheduleSend();
+  joyActive = false; stickDx = stickDy = 0; joyL = joyR = 0;
+  drawJoy(getCX(), getCY()); dirText.textContent = 'IDLE';
 }
 
 canvas.addEventListener('touchstart',  e => { e.preventDefault(); joyActive = true;  updateStick(e.touches[0].clientX, e.touches[0].clientY); }, { passive: false });
@@ -1255,16 +901,14 @@ window.addEventListener('mouseup',    () => { if (joyActive) resetStick(); });
 //  ARROW PAD
 // ════════════════════════════════════════════════════════
 const PAD_SPEED = 85;
-
 const held = { N: false, S: false, W: false, E: false };
 
 function holdDir(dir, active) {
   if (held[dir] === active) return;
   held[dir] = active;
-  const el = document.getElementById('pad' + dir);
-  if (el) el.classList.toggle('pressed', active);
-  // sync landscape
+  const el  = document.getElementById('pad' + dir);
   const elL = document.getElementById('pad' + dir + 'L');
+  if (el)  el.classList.toggle('pressed', active);
   if (elL) elL.classList.toggle('pressed', active);
 }
 
@@ -1285,12 +929,11 @@ padStop.addEventListener('touchstart', e => { e.preventDefault(); doStop(); }, {
 //  KEYBOARD
 // ════════════════════════════════════════════════════════
 const KEY_MAP = {
-  'KeyW': 'N', 'ArrowUp':    'N',
-  'KeyS': 'S', 'ArrowDown':  'S',
-  'KeyA': 'W', 'ArrowLeft':  'W',
+  'KeyW': 'N', 'ArrowUp': 'N',
+  'KeyS': 'S', 'ArrowDown': 'S',
+  'KeyA': 'W', 'ArrowLeft': 'W',
   'KeyD': 'E', 'ArrowRight': 'E'
 };
-
 window.addEventListener('keydown', e => {
   const dir = KEY_MAP[e.code];
   if (dir && !e.repeat) { e.preventDefault(); holdDir(dir, true); }
@@ -1302,14 +945,16 @@ window.addEventListener('keyup', e => {
 });
 
 // ════════════════════════════════════════════════════════
-//  GAME LOOP — 50ms tick, smooth ramping
+//  GAME LOOP — 50 ms tick, no HTML-side ramping
+//
+//  Ramping is handled entirely by the Pico firmware.
+//  The browser just sends the raw target value every tick
+//  whenever the mower is active (held key or joystick).
+//  This prevents double-ramping jitter and also keeps the
+//  Pico watchdog fed so motors never cut out mid-drive.
 // ════════════════════════════════════════════════════════
-let smoothL = 0, smoothR = 0;
 let lastSentL = 999, lastSentR = 999;
-
-const RAMP_UP   = 20;  // faster acceleration — less stuttering on hold
-const RAMP_DOWN = 25;  // faster decel
-const LOOP_MS   = 50;
+const LOOP_MS = 50;
 
 function calcPadTarget() {
   let fwd = 0, turn = 0;
@@ -1336,39 +981,22 @@ function calcPadTarget() {
   ];
 }
 
-function rampVal(cur, tgt) {
-  const diff = tgt - cur;
-  if (Math.abs(diff) < 1) return tgt;
-  const gain = Math.abs(tgt) > Math.abs(cur) ? RAMP_UP : RAMP_DOWN;
-  const step = Math.min(Math.abs(diff), gain) * Math.sign(diff);
-  return cur + step;
-}
-
-function scheduleSend() {}
-
 setInterval(() => {
   if (!connected) return;
 
-  // In auto mode, don't send motor commands (Pico ignores them anyway)
-  // but DO let the loop keep running so doStop() can send mode:stop immediately
   if (autoActive) {
     dirText.textContent = 'AUTO';
     tDir.textContent = 'AUTO';
     return;
   }
 
-  let tL, tR;
+  let sL, sR;
   if (joyActive) {
-    tL = joyL; tR = joyR;
+    sL = Math.round(joyL);
+    sR = Math.round(joyR);
   } else {
-    [tL, tR] = calcPadTarget();
+    [sL, sR] = calcPadTarget().map(Math.round);
   }
-
-  smoothL = rampVal(smoothL, tL);
-  smoothR = rampVal(smoothR, tR);
-
-  const sL = Math.round(smoothL);
-  const sR = Math.round(smoothR);
 
   const dir = calcDir(sL, sR);
   dirText.textContent = dir;
@@ -1376,7 +1004,11 @@ setInterval(() => {
   updateDirBar(dir);
   updateMotorBars(sL, sR);
 
-  if (sL === lastSentL && sR === lastSentR) return;
+  // Always send while moving — keeps the Pico watchdog fed.
+  // Only skip if truly idle (both zero and already sent zero).
+  const isIdle = sL === 0 && sR === 0;
+  if (isIdle && lastSentL === 0 && lastSentR === 0) return;
+
   lastSentL = sL; lastSentR = sR;
   sendCmd({ L: sL, R: sR });
 
@@ -1385,57 +1017,44 @@ setInterval(() => {
 // ════════════════════════════════════════════════════════
 //  HELPERS
 // ════════════════════════════════════════════════════════
-
-// FIX: calcDir now matches the web UI's L/R intent (before Pico swap).
-// L and R here are what we SEND.
-// The Pico inverts internally so we label from our intent:
-//   sL > sR and both positive → curving right (left motor faster) → FWD-RIGHT
-//   sL < sR and both positive → curving left  (right motor faster) → FWD-LEFT
-//   sL > 0 and sR < 0 → we're sending: left fwd, right back → pivot right
-//   sL < 0 and sR > 0 → pivot left
 function calcDir(L, R) {
   const T = 8;
   if (Math.abs(L) <= T && Math.abs(R) <= T) return 'STOP';
   const fl=L>T, fr=R>T, rl=L<-T, rr=R<-T;
   if (fl && fr) {
     if (Math.abs(L-R) < 20) return 'FORWARD';
-    // L < R means right value higher → robot curves left; L > R → curves right
-    // But Pico swaps L/R internally, so labels are inverted from send values:
     return L > R ? 'FWD-LEFT' : 'FWD-RIGHT';
   }
   if (rl && rr) {
     if (Math.abs(L-R) < 20) return 'REVERSE';
     return L < R ? 'REV-LEFT' : 'REV-RIGHT';
   }
-  // sL > 0, sR < 0: Pico swaps → physical right fwd, left back → PIVOT-L
   if (fl && rr) return 'PIVOT-L';
   if (rl && fr) return 'PIVOT-R';
   return 'STOP';
 }
 
 function updateDirBar(dir) {
-  const moving = dir !== 'STOP' && dir !== 'IDLE';
-  dirBarFill.style.width = moving ? '100%' : '0%';
+  dirBarFill.style.width = (dir !== 'STOP' && dir !== 'IDLE') ? '100%' : '0%';
 }
 
-function updateMotorBars(L, R) {
-  setBar(mfillL, L);
-  setBar(mfillR, R);
-}
+function updateMotorBars(L, R) { setBar(mfillL, L); setBar(mfillR, R); }
 
 function setBar(el, val) {
   const pct = Math.min(100, Math.abs(val));
-  el.style.width  = pct + '%';
-  el.style.left   = val >= 0 ? '0' : 'auto';
-  el.style.right  = val <  0 ? '0' : 'auto';
+  el.style.width = pct + '%';
+  el.style.left  = val >= 0 ? '0' : 'auto';
+  el.style.right = val <  0 ? '0' : 'auto';
   el.classList.toggle('rev', val < 0);
 }
 
+// ════════════════════════════════════════════════════════
+//  STOP — always works, even during auto
+// ════════════════════════════════════════════════════════
 function doStop() {
   autoActive = false;
   btnAuto.classList.remove('active');
   joyL = joyR = 0;
-  smoothL = smoothR = 0;
   lastSentL = lastSentR = 999;
   Object.keys(held).forEach(k => held[k] = false);
   ['N','S','W','E'].forEach(d => {
@@ -1444,39 +1063,38 @@ function doStop() {
     if (el)  el.classList.remove('pressed');
     if (elL) elL.classList.remove('pressed');
   });
-  joyActive = false;
-  stickDx = stickDy = 0;
+  joyActive = false; stickDx = stickDy = 0;
   drawJoy(getCX(), getCY());
   dirText.textContent = 'IDLE';
   tDir.textContent = 'IDLE';
   updateMotorBars(0, 0);
   updateDirBar('IDLE');
-  // Clear any queued motor commands, put stop commands at front
+  // Flush queue and send stop immediately
   _sendQueue.length = 0;
-  sendCmd({ L: 0, R: 0 });
   sendCmd({ mode: 'stop' });
   addLog('SYS  STOP — all motion halted', 'err');
 }
 
 // ════════════════════════════════════════════════════════
 //  BUTTONS
+//  Blade and Stop work in ALL modes (manual AND auto)
 // ════════════════════════════════════════════════════════
 btnBlade.addEventListener('click', () => {
+  // Always send blade toggle — Pico handles it regardless of mode
   sendCmd({ mode: 'cut' });
   addLog('BLADE  Toggle sent', 'info');
-  // Optimistic UI update — Pico will confirm with cut_on/cut_off status
 });
 
 btnStop.addEventListener('click', () => doStop());
 
 btnAuto.addEventListener('click', () => {
   if (autoActive) {
-    doStop();   // reuse doStop so it sends the stop command immediately
+    doStop();
     addLog('AUTO  Cancel sent', 'info');
   } else {
     autoActive = true;
     btnAuto.classList.add('active');
-    joyL = joyR = smoothL = smoothR = 0;
+    joyL = joyR = 0;
     lastSentL = lastSentR = 999;
     drawJoy(getCX(), getCY());
     updateMotorBars(0, 0);
@@ -1489,184 +1107,140 @@ bleBtn.addEventListener('click', () => connected ? device.gatt.disconnect() : bl
 connOvlBtn.addEventListener('click', bleConnect);
 
 // ════════════════════════════════════════════════════════
-//  LANDSCAPE JOYSTICK (second canvas in sidebar)
+//  LANDSCAPE JOYSTICK
 // ════════════════════════════════════════════════════════
-const canvasL   = document.getElementById('joyCanvasLand');
-const ctxL      = canvasL.getContext('2d');
-let joyLActive  = false;
+const canvasL  = document.getElementById('joyCanvasLand');
+const ctxL     = canvasL.getContext('2d');
+let joyLActive = false;
 let stickLDx = 0, stickLDy = 0;
 
-const getCXL  = () => canvasL.width  / 2;
-const getCYL  = () => canvasL.height / 2;
-const getBRL  = () => Math.min(canvasL.width, canvasL.height) * 0.40;
-const getKRL  = () => getBRL() * 0.30;
+const getCXL = () => canvasL.width  / 2;
+const getCYL = () => canvasL.height / 2;
+const getBRL = () => Math.min(canvasL.width, canvasL.height) * 0.40;
+const getKRL = () => getBRL() * 0.30;
 
 function drawJoyL(px, py) {
-  const CX = getCXL(), CY = getCYL();
-  const BR = getBRL(), KR = getKRL();
+  const CX=getCXL(), CY=getCYL(), BR=getBRL(), KR=getKRL();
   ctxL.clearRect(0, 0, canvasL.width, canvasL.height);
-
   if (connected) {
-    const grad = ctxL.createRadialGradient(CX, CY, BR-4, CX, CY, BR+6);
-    grad.addColorStop(0, 'rgba(57,255,20,0.12)');
-    grad.addColorStop(1, 'transparent');
-    ctxL.beginPath(); ctxL.arc(CX, CY, BR+4, 0, Math.PI*2);
-    ctxL.fillStyle = grad; ctxL.fill();
+    const grad = ctxL.createRadialGradient(CX,CY,BR-4,CX,CY,BR+6);
+    grad.addColorStop(0,'rgba(57,255,20,0.12)'); grad.addColorStop(1,'transparent');
+    ctxL.beginPath(); ctxL.arc(CX,CY,BR+4,0,Math.PI*2);
+    ctxL.fillStyle=grad; ctxL.fill();
   }
-
-  ctxL.beginPath(); ctxL.arc(CX, CY, BR, 0, Math.PI*2);
-  ctxL.strokeStyle = connected ? '#1c3c1c' : '#111811';
-  ctxL.lineWidth = 1.5; ctxL.stroke();
-  ctxL.fillStyle = 'rgba(12,17,12,0.9)'; ctxL.fill();
-
-  ctxL.strokeStyle = '#1a2a1a'; ctxL.lineWidth = 1;
-  for (let r = BR * 0.33; r < BR; r += BR * 0.33) {
-    ctxL.beginPath(); ctxL.arc(CX, CY, r, 0, Math.PI*2); ctxL.stroke();
-  }
-  ctxL.beginPath(); ctxL.moveTo(CX-BR+4,CY); ctxL.lineTo(CX+BR-4,CY); ctxL.stroke();
-  ctxL.beginPath(); ctxL.moveTo(CX,CY-BR+4); ctxL.lineTo(CX,CY+BR-4); ctxL.stroke();
-
-  ctxL.beginPath(); ctxL.arc(px+2, py+3, KR, 0, Math.PI*2);
-  ctxL.fillStyle = 'rgba(0,0,0,0.5)'; ctxL.fill();
-
-  const kg = ctxL.createRadialGradient(px-KR*0.3, py-KR*0.3, 1, px, py, KR);
-  if (connected) {
-    kg.addColorStop(0, '#6aff40'); kg.addColorStop(0.6, '#39ff14'); kg.addColorStop(1, '#1aaa00');
-  } else {
-    kg.addColorStop(0, '#2a3a2a'); kg.addColorStop(1, '#1a2a1a');
-  }
-  ctxL.beginPath(); ctxL.arc(px, py, KR, 0, Math.PI*2);
-  ctxL.fillStyle = kg; ctxL.fill();
-  if (connected) { ctxL.strokeStyle = '#16a34a'; ctxL.lineWidth = 1.5; ctxL.stroke(); }
-  ctxL.beginPath(); ctxL.arc(px, py, 3, 0, Math.PI*2);
-  ctxL.fillStyle = connected ? 'rgba(0,0,0,0.6)' : 'rgba(0,0,0,0.3)'; ctxL.fill();
+  ctxL.beginPath(); ctxL.arc(CX,CY,BR,0,Math.PI*2);
+  ctxL.strokeStyle=connected?'#1c3c1c':'#111811'; ctxL.lineWidth=1.5; ctxL.stroke();
+  ctxL.fillStyle='rgba(12,17,12,0.9)'; ctxL.fill();
+  ctxL.strokeStyle='#1a2a1a'; ctxL.lineWidth=1;
+  for(let r=BR*0.33;r<BR;r+=BR*0.33){ctxL.beginPath();ctxL.arc(CX,CY,r,0,Math.PI*2);ctxL.stroke();}
+  ctxL.beginPath();ctxL.moveTo(CX-BR+4,CY);ctxL.lineTo(CX+BR-4,CY);ctxL.stroke();
+  ctxL.beginPath();ctxL.moveTo(CX,CY-BR+4);ctxL.lineTo(CX,CY+BR-4);ctxL.stroke();
+  ctxL.beginPath();ctxL.arc(px+2,py+3,KR,0,Math.PI*2);
+  ctxL.fillStyle='rgba(0,0,0,0.5)';ctxL.fill();
+  const kg=ctxL.createRadialGradient(px-KR*0.3,py-KR*0.3,1,px,py,KR);
+  if(connected){kg.addColorStop(0,'#6aff40');kg.addColorStop(0.6,'#39ff14');kg.addColorStop(1,'#1aaa00');}
+  else{kg.addColorStop(0,'#2a3a2a');kg.addColorStop(1,'#1a2a1a');}
+  ctxL.beginPath();ctxL.arc(px,py,KR,0,Math.PI*2);
+  ctxL.fillStyle=kg;ctxL.fill();
+  if(connected){ctxL.strokeStyle='#16a34a';ctxL.lineWidth=1.5;ctxL.stroke();}
+  ctxL.beginPath();ctxL.arc(px,py,3,0,Math.PI*2);
+  ctxL.fillStyle=connected?'rgba(0,0,0,0.6)':'rgba(0,0,0,0.3)';ctxL.fill();
 }
 
 function updateStickL(clientX, clientY) {
-  const r    = canvasL.getBoundingClientRect();
-  const CX   = getCXL(), CY = getCYL();
-  const BR   = getBRL(), KR = getKRL();
-  const maxR = BR - KR;
-  let dx = clientX - r.left - CX;
-  let dy = clientY - r.top  - CY;
-  const dist = Math.sqrt(dx*dx + dy*dy);
-  if (dist > maxR) { dx *= maxR/dist; dy *= maxR/dist; }
-  stickLDx = dx; stickLDy = dy;
-
-  const nx = Math.abs(dx) < maxR * 0.06 ? 0 : dx / maxR;
-  const ny = Math.abs(dy) < maxR * 0.06 ? 0 : dy / maxR;
-  const turnScale = 0.65;
-  // FIX: same convention as portrait joystick
-  joyL = Math.max(-100, Math.min(100, (-ny - nx * turnScale) * 100));
-  joyR = Math.max(-100, Math.min(100, (-ny + nx * turnScale) * 100));
-
-  drawJoyL(CX + dx, CY + dy);
+  const r=canvasL.getBoundingClientRect();
+  const CX=getCXL(),CY=getCYL(),BR=getBRL(),KR=getKRL();
+  const maxR=BR-KR;
+  let dx=clientX-r.left-CX, dy=clientY-r.top-CY;
+  const dist=Math.sqrt(dx*dx+dy*dy);
+  if(dist>maxR){dx*=maxR/dist;dy*=maxR/dist;}
+  stickLDx=dx;stickLDy=dy;
+  const nx=Math.abs(dx)<maxR*0.06?0:dx/maxR;
+  const ny=Math.abs(dy)<maxR*0.06?0:dy/maxR;
+  const turnScale=0.65;
+  joyL=Math.max(-100,Math.min(100,(-ny-nx*turnScale)*100));
+  joyR=Math.max(-100,Math.min(100,(-ny+nx*turnScale)*100));
+  drawJoyL(CX+dx,CY+dy);
 }
 
 function resetStickL() {
-  joyLActive = false;
-  stickLDx = stickLDy = 0;
-  joyL = joyR = 0;
-  drawJoyL(getCXL(), getCYL());
+  joyLActive=false;stickLDx=stickLDy=0;joyL=joyR=0;
+  drawJoyL(getCXL(),getCYL());
 }
 
-canvasL.addEventListener('touchstart',  e => { e.preventDefault(); joyLActive = true;  joyActive = true;  updateStickL(e.touches[0].clientX, e.touches[0].clientY); }, { passive: false });
-canvasL.addEventListener('touchmove',   e => { e.preventDefault(); if (joyLActive) updateStickL(e.touches[0].clientX, e.touches[0].clientY); }, { passive: false });
-canvasL.addEventListener('touchend',    e => { e.preventDefault(); joyLActive = false; joyActive = false; resetStickL(); }, { passive: false });
-canvasL.addEventListener('touchcancel', e => { e.preventDefault(); joyLActive = false; joyActive = false; resetStickL(); }, { passive: false });
-canvasL.addEventListener('mousedown', e => { joyLActive = true; joyActive = true; updateStickL(e.clientX, e.clientY); });
-window.addEventListener('mousemove',  e => { if (joyLActive) updateStickL(e.clientX, e.clientY); });
-window.addEventListener('mouseup',    () => { if (joyLActive) { joyLActive = false; joyActive = false; resetStickL(); } });
+canvasL.addEventListener('touchstart',  e=>{e.preventDefault();joyLActive=true;joyActive=true;updateStickL(e.touches[0].clientX,e.touches[0].clientY);},{passive:false});
+canvasL.addEventListener('touchmove',   e=>{e.preventDefault();if(joyLActive)updateStickL(e.touches[0].clientX,e.touches[0].clientY);},{passive:false});
+canvasL.addEventListener('touchend',    e=>{e.preventDefault();joyLActive=false;joyActive=false;resetStickL();},{passive:false});
+canvasL.addEventListener('touchcancel', e=>{e.preventDefault();joyLActive=false;joyActive=false;resetStickL();},{passive:false});
+canvasL.addEventListener('mousedown',e=>{joyLActive=true;joyActive=true;updateStickL(e.clientX,e.clientY);});
+window.addEventListener('mousemove', e=>{if(joyLActive)updateStickL(e.clientX,e.clientY);});
+window.addEventListener('mouseup',   ()=>{if(joyLActive){joyLActive=false;joyActive=false;resetStickL();}});
 
-// Landscape arrow pad
-['N','S','W','E'].forEach(dir => {
-  const btn = document.getElementById('pad' + dir + 'L');
-  if (!btn) return;
-  btn.addEventListener('touchstart',  e => { e.preventDefault(); holdDir(dir, true);  }, { passive: false });
-  btn.addEventListener('touchend',    e => { e.preventDefault(); holdDir(dir, false); }, { passive: false });
-  btn.addEventListener('touchcancel', e => { e.preventDefault(); holdDir(dir, false); }, { passive: false });
-  btn.addEventListener('mousedown',  () => holdDir(dir, true));
-  btn.addEventListener('mouseup',    () => holdDir(dir, false));
-  btn.addEventListener('mouseleave', () => holdDir(dir, false));
+['N','S','W','E'].forEach(dir=>{
+  const btn=document.getElementById('pad'+dir+'L');
+  if(!btn)return;
+  btn.addEventListener('touchstart', e=>{e.preventDefault();holdDir(dir,true); },{passive:false});
+  btn.addEventListener('touchend',   e=>{e.preventDefault();holdDir(dir,false);},{passive:false});
+  btn.addEventListener('touchcancel',e=>{e.preventDefault();holdDir(dir,false);},{passive:false});
+  btn.addEventListener('mousedown', ()=>holdDir(dir,true));
+  btn.addEventListener('mouseup',   ()=>holdDir(dir,false));
+  btn.addEventListener('mouseleave',()=>holdDir(dir,false));
 });
-
-document.getElementById('padStopL').addEventListener('mousedown',  e => { e.preventDefault(); doStop(); });
-document.getElementById('padStopL').addEventListener('touchstart', e => { e.preventDefault(); doStop(); }, { passive: false });
+document.getElementById('padStopL').addEventListener('mousedown', e=>{e.preventDefault();doStop();});
+document.getElementById('padStopL').addEventListener('touchstart',e=>{e.preventDefault();doStop();},{passive:false});
 
 function resizeLandCanvas() {
-  const wrap = document.getElementById('joyWrapLand');
-  const w = wrap.clientWidth;
-  const h = wrap.clientHeight;
-  if (canvasL.width !== w || canvasL.height !== h) {
-    canvasL.width  = w;
-    canvasL.height = h;
-  }
-  drawJoyL(getCXL() + stickLDx, getCYL() + stickLDy);
+  const wrap=document.getElementById('joyWrapLand');
+  const w=wrap.clientWidth, h=wrap.clientHeight;
+  if(canvasL.width!==w||canvasL.height!==h){canvasL.width=w;canvasL.height=h;}
+  drawJoyL(getCXL()+stickLDx,getCYL()+stickLDy);
 }
 
 // ════════════════════════════════════════════════════════
-//  FULLSCREEN + ORIENTATION LOCK
+//  FULLSCREEN
 // ════════════════════════════════════════════════════════
-const fsBtn  = document.getElementById('fsBtn');
-const fsIcon = document.getElementById('fsIcon');
-const landBle = document.getElementById('landBle');
-const landBleLabel = document.getElementById('landBleLabel');
+const fsBtn=document.getElementById('fsBtn');
+const fsIcon=document.getElementById('fsIcon');
+const landBle=document.getElementById('landBle');
+const landBleLabel=document.getElementById('landBleLabel');
+const ICON_EXPAND=`<path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M8 21H5a2 2 0 0 1-2-2v-3"/>`;
+const ICON_EXIT  =`<path d="M8 3v3a2 2 0 0 1-2 2H3M21 8h-3a2 2 0 0 1-2-2V3M3 16h3a2 2 0 0 0 2 2v3M16 21v-3a2 2 0 0 0 2-2h3"/>`;
 
-const ICON_EXPAND = `<path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M8 21H5a2 2 0 0 1-2-2v-3"/>`;
-const ICON_EXIT   = `<path d="M8 3v3a2 2 0 0 1-2 2H3M21 8h-3a2 2 0 0 1-2-2V3M3 16h3a2 2 0 0 0 2 2v3M16 21v-3a2 2 0 0 0 2-2h3"/>`;
-
-async function enterFullscreen() {
-  try { await document.documentElement.requestFullscreen({ navigationUI: 'hide' }); } catch(e) {}
-  try { await screen.orientation.lock('landscape'); } catch(e) {}
-  fsIcon.innerHTML = ICON_EXIT;
+async function enterFullscreen(){
+  try{await document.documentElement.requestFullscreen({navigationUI:'hide'});}catch(e){}
+  try{await screen.orientation.lock('landscape');}catch(e){}
+  fsIcon.innerHTML=ICON_EXIT;
 }
-
-async function exitFullscreen() {
-  try { if (document.fullscreenElement) await document.exitFullscreen(); } catch(e) {}
-  try { screen.orientation.unlock(); } catch(e) {}
-  fsIcon.innerHTML = ICON_EXPAND;
+async function exitFullscreen(){
+  try{if(document.fullscreenElement)await document.exitFullscreen();}catch(e){}
+  try{screen.orientation.unlock();}catch(e){}
+  fsIcon.innerHTML=ICON_EXPAND;
 }
-
-fsBtn.addEventListener('click', () => {
-  if (document.fullscreenElement) exitFullscreen(); else enterFullscreen();
+fsBtn.addEventListener('click',()=>{document.fullscreenElement?exitFullscreen():enterFullscreen();});
+document.addEventListener('fullscreenchange',()=>{
+  if(!document.fullscreenElement){fsIcon.innerHTML=ICON_EXPAND;try{screen.orientation.unlock();}catch(e){}}
+  setTimeout(()=>{resizeCanvas();resizeLandCanvas();},100);
 });
 
-document.addEventListener('fullscreenchange', () => {
-  if (!document.fullscreenElement) {
-    fsIcon.innerHTML = ICON_EXPAND;
-    try { screen.orientation.unlock(); } catch(e) {}
-  }
-  setTimeout(() => { resizeCanvas(); resizeLandCanvas(); }, 100);
-});
-
-function updateLandBle() {
-  if (connected) {
-    landBle.classList.add('connected');
-    landBleLabel.textContent = 'ONLINE';
-  } else {
-    landBle.classList.remove('connected');
-    landBleLabel.textContent = 'OFFLINE';
-  }
+function updateLandBle(){
+  if(connected){landBle.classList.add('connected');landBleLabel.textContent='ONLINE';}
+  else{landBle.classList.remove('connected');landBleLabel.textContent='OFFLINE';}
 }
 
 // ════════════════════════════════════════════════════════
 //  RESIZE
 // ════════════════════════════════════════════════════════
-function resizeCanvas() {
-  const wrap = document.getElementById('joyWrap');
-  const w = wrap.clientWidth;
-  const h = Math.min(w * 0.72, 230);
-  wrap.style.height = h + 'px';
-  if (canvas.width !== w || canvas.height !== h) {
-    canvas.width = w;
-    canvas.height = h;
-  }
-  drawJoy(getCX() + stickDx, getCY() + stickDy);
+function resizeCanvas(){
+  const wrap=document.getElementById('joyWrap');
+  const w=wrap.clientWidth;
+  const h=Math.min(w*0.72,230);
+  wrap.style.height=h+'px';
+  if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;}
+  drawJoy(getCX()+stickDx,getCY()+stickDy);
   resizeLandCanvas();
 }
-
-window.addEventListener('resize', () => { resizeCanvas(); resizeLandCanvas(); });
-window.addEventListener('orientationchange', () => { setTimeout(() => { resizeCanvas(); resizeLandCanvas(); }, 150); });
+window.addEventListener('resize',()=>{resizeCanvas();resizeLandCanvas();});
+window.addEventListener('orientationchange',()=>{setTimeout(()=>{resizeCanvas();resizeLandCanvas();},150);});
 resizeCanvas();
 resizeLandCanvas();
 </script>
